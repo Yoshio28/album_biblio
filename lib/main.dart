@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:album_biblio/views/album_vista.dart';
+import 'package:album_biblio/views/perfil_usuario.dart';
 
 void main() {
   runApp(const MyApp());
