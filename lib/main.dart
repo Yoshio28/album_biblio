@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:album_biblio/views/album_vista.dart';
 import 'package:album_biblio/views/perfil_usuario.dart';
+import 'views/album_lista.dart';
+import 'model/album_biblio.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Demo Album',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
-      home: AlbumVista(),
+      home: AlbumLista(),
     );
   }
 }
