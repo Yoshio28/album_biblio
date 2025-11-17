@@ -1,23 +1,40 @@
-class AlbumBiblio {
+import 'album.dart';
+import 'package:flutter/material.dart';
+
+class AlbumBiblio extends ChangeNotifier {
   final List<Album> _listaAlbumes = [];
-  AlbumBiblio();
+
   List<Album> get albumes => _listaAlbumes;
+
+  Album getAlbumByIndex(int index) => _listaAlbumes[index];
+
+  void setAlbumes(List<Album> albumes) {
+    _listaAlbumes
+      ..clear()
+      ..addAll(albumes);
+    notifyListeners();
+  }
+
   void addAlbum(Album album) {
     _listaAlbumes.add(album);
+    notifyListeners();
   }
-}
 
-class Album {
-  String? id;
-  String titulo;
-  String artista;
-  int anio;
-  String gender;
-  Album({
-    this.id,
-    required this.titulo,
-    required this.artista,
-    required this.anio,
-    required this.gender,
-  });
+  bool updateAlbum(int index, Album album) {
+    if (index >= 0 && index < _listaAlbumes.length) {
+      _listaAlbumes[index] = album;
+      notifyListeners();
+      return true;
+    }
+    return false;
+  }
+
+  bool removeAlbum(int index) {
+    if (index >= 0 && index < _listaAlbumes.length) {
+      _listaAlbumes.removeAt(index);
+      notifyListeners();
+      return true;
+    }
+    return false;
+  }
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:album_biblio/views/album_vista.dart';
-import 'package:album_biblio/views/perfil_usuario.dart';
-import 'views/album_lista.dart';
+import 'package:provider/provider.dart';
 import 'model/album_biblio.dart';
+import 'views/album_lista.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(create: (_) => AlbumBiblio(), child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,9 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Demo Album',
-      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
-      home: AlbumLista(),
+      title: 'Biblioteca de Álbumes',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const AlbumLista(),
     );
   }
 }

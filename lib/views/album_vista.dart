@@ -1,38 +1,33 @@
 import 'package:flutter/material.dart';
-
-class Album {
-  String? id = "0000";
-  String titulo = "I don't care";
-  String artista = "Violent Vira";
-  int anio = 2024;
-  String gender = "Rock";
-}
+import '../model/album.dart';
 
 class AlbumVista extends StatelessWidget {
-  final Album album = Album();
-  AlbumVista({super.key});
+  final Album album;
+
+  const AlbumVista({super.key, required this.album});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Datos del Album")),
+      appBar: AppBar(title: const Text("Datos del Álbum")),
       body: Center(
         child: Container(
           margin: const EdgeInsets.all(16),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceVariant,
+            color: const Color.fromARGB(66, 196, 0, 0),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Imagen simulada
               Container(
                 height: 180,
                 width: 180,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black26),
+                  border: Border.all(
+                    color: const Color.fromARGB(66, 196, 0, 0),
+                  ),
                 ),
                 child: const Center(child: Text("IMAGEN")),
               ),
@@ -40,17 +35,17 @@ class AlbumVista extends StatelessWidget {
 
               infoRow(
                 context,
-                titulo: "Título: ",
+                titulo: "Título:",
                 valor: album.titulo,
                 italic: true,
               ),
-              infoRow(context, titulo: "Cantante: ", valor: album.artista),
+              infoRow(context, titulo: "Cantante:", valor: album.artista),
               infoRow(
                 context,
-                titulo: "Año de lanzamiento: ",
+                titulo: "Año de lanzamiento:",
                 valor: album.anio.toString(),
               ),
-              infoRow(context, titulo: "Género: ", valor: album.gender),
+              infoRow(context, titulo: "Género:", valor: album.genero),
             ],
           ),
         ),
